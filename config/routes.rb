@@ -1,4 +1,13 @@
 Workspace::Application.routes.draw do
+  get 'sessions/new'
+
+  #resources :courses
+  resources :users
+  
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
   get "static_pages/about"
   get "static_pages/welcome"
   
@@ -8,7 +17,7 @@ Workspace::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   #controller#method
-  root 'static_pages#welcome'
+  root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
